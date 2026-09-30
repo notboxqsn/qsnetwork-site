@@ -121,32 +121,63 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,34px);line-
 .pillar ul svg{width:16px;height:16px;flex:none;margin-top:4px}
 
 /* Animated flow diagram */
-.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 26px;margin-bottom:40px;overflow:hidden}
-.flowpanel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px 260px at 50% 40%,rgba(53,196,181,.16),transparent 70%)}
-.flowtrack{position:relative;height:150px}
-.flowline{position:absolute;left:8%;right:8%;top:58px;height:2px;background:linear-gradient(90deg,rgba(53,196,181,.15),rgba(53,196,181,.55),rgba(74,222,128,.55),rgba(74,222,128,.15))}
-.fst{position:absolute;top:0;transform:translateX(-50%);text-align:center;width:230px}
-.fst .fic{width:64px;height:64px;margin:0 auto 12px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
-.fst .fic svg{width:34px;height:34px}
-.fst .fk{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:#6ED2C4;display:block;margin-bottom:3px}
-.fst .fl{font-size:13px;color:#C9DAE6;font-weight:500}
-.fst-tee .fic{animation:teepulse 6s ease-in-out infinite}
-@keyframes teepulse{0%,30%,100%{box-shadow:0 0 0 rgba(53,196,181,0)}38%,46%{box-shadow:0 0 36px rgba(53,196,181,.75)}60%{box-shadow:0 0 0 rgba(53,196,181,0)}}
-.pk{position:absolute;top:53px;left:17%;width:11px;height:11px;border-radius:3px;background:var(--teal-bright);opacity:0;animation:pkmove 6s linear infinite}
-.pk.p2{animation-delay:.45s}.pk.p3{animation-delay:.9s}
-@keyframes pkmove{0%{left:17%;opacity:0}5%{opacity:1}26%{left:48%;opacity:1}30%{left:50%;opacity:0}100%{left:50%;opacity:0}}
-.cred{position:absolute;top:44px;left:50%;opacity:0;transform:translateX(-50%) scale(.6);animation:credmove 6s ease-in-out infinite}
-.cred svg{width:30px;height:30px;filter:drop-shadow(0 0 10px rgba(74,222,128,.6))}
-@keyframes credmove{0%,38%{left:50%;opacity:0;transform:translateX(-50%) scale(.55)}44%{opacity:1;transform:translateX(-50%) scale(1)}48%{left:50%}72%{left:83%;opacity:1;transform:translateX(-50%) scale(1)}76%,100%{left:83%;opacity:0;transform:translateX(-50%) scale(.8)}}
-.vping{position:absolute;top:32px;left:83%;width:64px;height:64px;transform:translateX(-50%);border-radius:14px;border:2px solid var(--mint);opacity:0;animation:vping 6s ease-out infinite;pointer-events:none}
-@keyframes vping{0%,74%{opacity:0;transform:translateX(-50%) scale(1)}78%{opacity:.85}96%,100%{opacity:0;transform:translateX(-50%) scale(1.9)}}
-.vtime{position:absolute;top:118px;left:83%;transform:translateX(-50%);font-family:var(--mono);font-size:11.5px;color:var(--mint);background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.35);border-radius:6px;padding:2px 10px;opacity:0;animation:vtime 6s ease infinite}
-@keyframes vtime{0%,76%{opacity:0}82%,94%{opacity:1}100%{opacity:0}}
+.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;margin-bottom:40px;overflow:hidden}
+.flowpanel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(460px 280px at 50% 42%,rgba(53,196,181,.15),transparent 70%)}
+.flowtrack{position:relative;height:238px}
+.flowsvg{position:absolute;inset:0;width:100%;height:100%}
+.fsrc{position:absolute;left:12%;transform:translateX(-50%);text-align:center;width:170px}
+.fsrc .fic{width:46px;height:46px;margin:0 auto 4px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+.fsrc .fic svg{width:24px;height:24px}
+.fsrc .fl{font-size:11.5px;color:#C9DAE6;font-weight:500;display:block;line-height:1.25}
+.fbig{position:absolute;transform:translateX(-50%);text-align:center;width:250px}
+.fbig .fic{width:66px;height:66px;margin:0 auto 10px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);position:relative}
+.fbig .fic svg{width:36px;height:36px}
+.fbig .fk{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:#6ED2C4;display:block;margin-bottom:2px}
+.fbig .fl{font-size:12.5px;color:#C9DAE6;font-weight:500}
+.teering{position:absolute;inset:-9px;border:1.5px dashed rgba(53,196,181,.5);border-radius:19px;animation:teerot 12s linear infinite}
+@keyframes teerot{to{transform:rotate(360deg)}}
+.fst-tee .fic{animation:teepulse 8s ease-in-out infinite}
+@keyframes teepulse{0%,28%,100%{box-shadow:0 0 0 rgba(53,196,181,0)}34%,42%{box-shadow:0 0 38px rgba(53,196,181,.8)}52%{box-shadow:0 0 0 rgba(53,196,181,0)}}
+.pk{position:absolute;width:10px;height:10px;border-radius:3px;background:var(--teal-bright);opacity:0}
+.pk.s1{animation:pks1 8s linear infinite}
+.pk.s2{animation:pks2 8s linear infinite}
+.pk.s3{animation:pks3 8s linear infinite}
+@keyframes pks1{0%{left:13%;top:18px;opacity:0}5%{opacity:1}27%{left:44%;top:99px;opacity:1}31%{left:45.5%;top:99px;opacity:0}100%{left:45.5%;top:99px;opacity:0}}
+@keyframes pks2{0%{left:13%;top:92px;opacity:0}7%{opacity:1}27%{left:44%;top:99px;opacity:1}31%{left:45.5%;top:99px;opacity:0}100%{left:45.5%;top:99px;opacity:0}}
+@keyframes pks3{0%{left:13%;top:166px;opacity:0}9%{opacity:1}27%{left:44%;top:99px;opacity:1}31%{left:45.5%;top:99px;opacity:0}100%{left:45.5%;top:99px;opacity:0}}
+.cred{position:absolute;top:88px;left:46%;opacity:0;transform:translateX(-50%) scale(.55)}
+.cred{animation:credmove 8s ease-in-out infinite}
+.cred svg{width:30px;height:30px;filter:drop-shadow(0 0 10px rgba(74,222,128,.65))}
+@keyframes credmove{0%,42%{left:46%;opacity:0;transform:translateX(-50%) scale(.55)}47%{opacity:1;transform:translateX(-50%) scale(1)}62%{left:84%;opacity:1;transform:translateX(-50%) scale(1)}66%,100%{left:84%;opacity:0;transform:translateX(-50%) scale(.8)}}
+.chain{position:absolute;left:57%;top:158px;display:flex;gap:7px}
+.blk{width:19px;height:19px;border-radius:5px;background:rgba(53,196,181,.30);border:1px solid rgba(53,196,181,.55)}
+.blk.new{background:transparent;border:1.5px dashed rgba(74,222,128,.5);animation:blknew 8s ease infinite}
+@keyframes blknew{0%,50%{background:transparent;border-style:dashed;box-shadow:none}56%{background:rgba(74,222,128,.75);border-style:solid;box-shadow:0 0 18px rgba(74,222,128,.8)}72%,100%{background:rgba(74,222,128,.45);border-style:solid;box-shadow:none}}
+.vping{position:absolute;top:60px;left:84%;width:66px;height:66px;transform:translateX(-50%);border-radius:15px;border:2px solid var(--mint);opacity:0;animation:vping 8s ease-out infinite;pointer-events:none}
+@keyframes vping{0%,62%{opacity:0;transform:translateX(-50%) scale(1)}66%{opacity:.85}82%,100%{opacity:0;transform:translateX(-50%) scale(1.9)}}
+.vchips{position:absolute;left:84%;top:186px;transform:translateX(-50%);display:flex;gap:8px;white-space:nowrap}
+.vchip{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;color:#C9DAE6;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);border-radius:7px;padding:4px 10px}
+.vchip i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);font-style:normal}
+.vchip.c1 i{animation:chipdot 8s ease infinite}
+.vchip.c2 i{animation:chipdot 8s ease infinite;animation-delay:.35s}
+@keyframes chipdot{0%,68%{background:rgba(255,255,255,.25);box-shadow:none}72%,90%{background:var(--mint);box-shadow:0 0 10px rgba(74,222,128,.9)}96%,100%{background:rgba(255,255,255,.25)}}
+.fnote{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:#7FE7DB;background:rgba(5,16,28,.72);border:1px solid rgba(53,196,181,.3);border-radius:7px;padding:4px 12px;opacity:0;white-space:nowrap}
+.fnote.n1{animation:fnote1 8s ease infinite}
+.fnote.n2{animation:fnote2 8s ease infinite}
+.fnote.n3{animation:fnote3 8s ease infinite}
+.fnote.n4{animation:fnote4 8s ease infinite;color:var(--mint);border-color:rgba(74,222,128,.4)}
+@keyframes fnote1{0%,3%{opacity:0}8%,24%{opacity:1}30%,100%{opacity:0}}
+@keyframes fnote2{0%,32%{opacity:0}37%,48%{opacity:1}54%,100%{opacity:0}}
+@keyframes fnote3{0%,50%{opacity:0}55%,66%{opacity:1}72%,100%{opacity:0}}
+@keyframes fnote4{0%,64%{opacity:0}69%,88%{opacity:1}95%,100%{opacity:0}}
 @media (prefers-reduced-motion: reduce){
   .pk,.vping{display:none}
   .cred{animation:none;opacity:1;left:66%;transform:translateX(-50%) scale(1)}
-  .vtime{animation:none;opacity:1}
-  .fst-tee .fic{animation:none;box-shadow:0 0 24px rgba(53,196,181,.45)}
+  .fst-tee .fic,.teering{animation:none}
+  .fst-tee .fic{box-shadow:0 0 24px rgba(53,196,181,.45)}
+  .blk.new{animation:none;background:rgba(74,222,128,.45);border-style:solid}
+  .vchip.c1 i,.vchip.c2 i{animation:none;background:var(--mint)}
+  .fnote{animation:none !important;opacity:1}
 }
 @media(max-width:720px){.flowpanel{display:none}}
 
@@ -306,23 +337,46 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <p class="sec-lede">The pipeline runs continuously: data in, credentials out, verification on demand. Your team never processes a request by hand.</p>
     <div class="flowpanel" aria-hidden="true">
       <div class="flowtrack">
-        <div class="flowline"></div>
-        <span class="pk"></span><span class="pk p2"></span><span class="pk p3"></span>
-        <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" fill="rgba(74,222,128,.18)"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-        <div class="vping"></div>
-        <div class="vtime">0.4 s</div>
-        <div class="fst" style="left:17%">
+        <svg class="flowsvg" viewBox="0 0 1000 238" preserveAspectRatio="none">
+          <defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#35C4B5" stop-opacity=".55"/><stop offset="1" stop-color="#4ADE80" stop-opacity=".55"/>
+          </linearGradient></defs>
+          <g stroke="#35C4B5" stroke-opacity=".22" stroke-width="1.5" fill="none">
+            <path d="M136 26 C 280 26 330 104 448 104"/>
+            <path d="M136 100 C 280 100 330 104 448 104"/>
+            <path d="M136 174 C 280 174 330 104 448 104"/>
+          </g>
+          <line x1="478" y1="104" x2="828" y2="104" stroke="url(#fg)" stroke-width="2"/>
+        </svg>
+        <span class="pk s1"></span><span class="pk s2"></span><span class="pk s3"></span>
+        <div class="fsrc" style="top:0">
           <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE7DB" stroke-width="1.7"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5V12c0 1.66 3.58 3 8 3s8-1.34 8-3V5.5"/><path d="M4 12v6.5c0 1.66 3.58 3 8 3s8-1.34 8-3V12"/></svg></div>
-          <span class="fk">INGEST</span><span class="fl">Authoritative data</span>
+          <span class="fl">Registries</span>
         </div>
-        <div class="fst fst-tee" style="left:50%">
-          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#35C4B5" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1.5v3M12 1.5v3M15 1.5v3M9 19.5v3M12 19.5v3M15 19.5v3M1.5 9h3M1.5 12h3M1.5 15h3M19.5 9h3M19.5 12h3M19.5 15h3"/><path d="M9.5 12l1.8 1.8 3.2-3.6" stroke-width="1.9"/></svg></div>
+        <div class="fsrc" style="top:74px">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE7DB" stroke-width="1.7"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6"/></svg></div>
+          <span class="fl">Contract records</span>
+        </div>
+        <div class="fsrc" style="top:148px">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE7DB" stroke-width="1.7"><circle cx="12" cy="9" r="6"/><path d="M9.5 9l1.8 1.8 3.2-3.6M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/></svg></div>
+          <span class="fl">Licences &amp; permits</span>
+        </div>
+        <div class="fbig fst-tee" style="left:46%;top:70px">
+          <div class="fic"><span class="teering"></span><svg viewBox="0 0 24 24" fill="none" stroke="#35C4B5" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1.5v3M12 1.5v3M15 1.5v3M9 19.5v3M12 19.5v3M15 19.5v3M1.5 9h3M1.5 12h3M1.5 15h3M19.5 9h3M19.5 12h3M19.5 15h3"/><path d="M9.5 12l1.8 1.8 3.2-3.6" stroke-width="1.9"/></svg></div>
           <span class="fk">ISSUE</span><span class="fl">Signed in hardware (TEE)</span>
         </div>
-        <div class="fst" style="left:83%">
+        <div class="cred"><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" fill="rgba(74,222,128,.18)"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+        <div class="chain"><span class="blk"></span><span class="blk"></span><span class="blk"></span><span class="blk"></span><span class="blk new"></span></div>
+        <div class="vping"></div>
+        <div class="fbig" style="left:84%;top:70px">
           <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12.5l3 3 5.5-6.5"/></svg></div>
           <span class="fk">VERIFY</span><span class="fl">Anyone, in &lt; 1 s</span>
         </div>
+        <div class="vchips"><span class="vchip c1"><i></i>Browser</span><span class="vchip c2"><i></i>QR scan</span></div>
+        <span class="fnote n1" style="left:27%;top:40px">refreshed daily</span>
+        <span class="fnote n2" style="left:46%;top:196px">keys never leave the enclave</span>
+        <span class="fnote n3" style="left:66%;top:196px">anchored on a distributed ledger</span>
+        <span class="fnote n4" style="left:84%;top:26px">cryptographic proof · 0.4 s</span>
       </div>
     </div>
     <div class="steps">
