@@ -121,7 +121,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,34px);line-
 .pillar ul svg{width:16px;height:16px;flex:none;margin-top:4px}
 
 /* Animated flow diagram */
-.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;margin-bottom:40px;overflow:hidden}
+.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;margin-top:40px;overflow:hidden}
 .flowpanel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(460px 280px at 50% 42%,rgba(53,196,181,.15),transparent 70%)}
 .flowtrack{position:relative;height:238px}
 .flowsvg{position:absolute;inset:0;width:100%;height:100%}
@@ -335,6 +335,26 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <p class="sec-eyebrow">How it works</p>
     <h2>From source data to verified credential — with no staff action.</h2>
     <p class="sec-lede">The pipeline runs continuously: data in, credentials out, verification on demand. Your team never processes a request by hand.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="n">STEP 1 — INGEST</span>
+        <h3>Authoritative data, continuously</h3>
+        <p>The platform ingests your authoritative datasets — registries, contract records, licensing systems — on a daily cycle and derives each holder's current status automatically.</p>
+        <span class="tag">zero staff action</span>
+      </div>
+      <div class="step">
+        <span class="n">STEP 2 — ISSUE</span>
+        <h3>Credential signed in hardware</h3>
+        <p>An issuer agent running inside a Trusted Execution Environment signs a W3C-aligned credential anchored on a distributed ledger. Signing keys never leave the enclave.</p>
+        <span class="tag">tamper-resistant</span>
+      </div>
+      <div class="step">
+        <span class="n">STEP 3 — VERIFY</span>
+        <h3>One click. Under one second.</h3>
+        <p>Holders sign in with a passkey — Face ID, Touch ID, Windows Hello — and embed a live badge on their website. Anyone can verify with a click or QR scan.</p>
+        <span class="tag">&lt; 1s cryptographic proof</span>
+      </div>
+    </div>
     <div class="flowpanel" aria-hidden="true">
       <div class="flowtrack">
         <svg class="flowsvg" viewBox="0 0 1000 238" preserveAspectRatio="none">
@@ -377,26 +397,6 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
         <span class="fnote n2" style="left:46%;top:196px">keys never leave the enclave</span>
         <span class="fnote n3" style="left:66%;top:196px">anchored on a distributed ledger</span>
         <span class="fnote n4" style="left:84%;top:26px">cryptographic proof · 0.4 s</span>
-      </div>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <span class="n">STEP 1 — INGEST</span>
-        <h3>Authoritative data, continuously</h3>
-        <p>The platform ingests your authoritative datasets — registries, contract records, licensing systems — on a daily cycle and derives each holder's current status automatically.</p>
-        <span class="tag">zero staff action</span>
-      </div>
-      <div class="step">
-        <span class="n">STEP 2 — ISSUE</span>
-        <h3>Credential signed in hardware</h3>
-        <p>An issuer agent running inside a Trusted Execution Environment signs a W3C-aligned credential anchored on a distributed ledger. Signing keys never leave the enclave.</p>
-        <span class="tag">tamper-resistant</span>
-      </div>
-      <div class="step">
-        <span class="n">STEP 3 — VERIFY</span>
-        <h3>One click. Under one second.</h3>
-        <p>Holders sign in with a passkey — Face ID, Touch ID, Windows Hello — and embed a live badge on their website. Anyone can verify with a click or QR scan.</p>
-        <span class="tag">&lt; 1s cryptographic proof</span>
       </div>
     </div>
   </div>
