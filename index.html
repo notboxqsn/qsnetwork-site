@@ -121,7 +121,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,34px);line-
 .pillar ul svg{width:16px;height:16px;flex:none;margin-top:4px}
 
 /* Animated flow diagram */
-.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;margin-top:40px;overflow:hidden}
+.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;overflow:hidden}
 .flowpanel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(460px 280px at 50% 42%,rgba(53,196,181,.15),transparent 70%)}
 .flowtrack{position:relative;height:238px}
 .flowsvg{position:absolute;inset:0;width:100%;height:100%}
@@ -181,15 +181,11 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,34px);line-
 }
 @media(max-width:720px){.flowpanel{display:none}}
 
-/* Steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
-.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 24px;position:relative;overflow:hidden}
-.step::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-bright),var(--mint))}
-.step .n{font-family:var(--mono);font-size:12px;color:var(--teal);display:block;margin-bottom:14px}
-.step h3{font-size:17px;font-weight:600;margin-bottom:8px}
-.step p{font-size:14.5px;color:var(--muted)}
-.step .tag{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--verified);background:var(--verified-bg);border-radius:5px;padding:3px 9px}
+/* Steps (mobile fallback) */
+.steps-mini{display:none;list-style:none;font-size:14.5px;color:var(--muted)}
+.steps-mini li{padding:10px 0;border-top:1px dashed var(--line)}
+.steps-mini b{color:var(--ink)}
+@media(max-width:720px){.steps-mini{display:block}}
 
 /* Use cases */
 .uses{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -270,7 +266,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <div>
       <p class="eyebrow">QSNetwork Canada Inc. · Montreal, Quebec</p>
       <h1>Turn authoritative data into credentials anyone can <span class="v">verify</span> — in under a second.</h1>
-      <p class="lede">QSNetwork builds digital trust infrastructure. We transform records your organization already holds into tamper-resistant digital credentials — claimed with a passkey, no wallet, no app — and verifiable by anyone, instantly.</p>
+      <p class="lede">We turn the records your organization already holds into tamper-resistant digital credentials — claimed with a passkey, verifiable by anyone, instantly.</p>
       <ul class="hero-points" aria-label="Key properties">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.4" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>Tamper-resistant by design</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.4" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>Verification in under 1 s</li>
@@ -303,17 +299,17 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
   <div class="wrap">
     <p class="sec-eyebrow">What we do</p>
     <h2>Trust infrastructure, delivered as a service.</h2>
-    <p class="sec-lede">Organizations hold records that others need to trust — licences, registrations, memberships, certifications. QSNetwork turns those records into credentials that prove themselves, backed by resilient decentralized data infrastructure.</p>
+    <p class="sec-lede">We turn the records others need to trust into credentials that prove themselves.</p>
     <div class="pillars">
       <div class="pillar">
         <span class="n">Core service</span>
         <h3>Verifiable credentials &amp; digital trust</h3>
         <p>An end-to-end pipeline from authoritative data to instantly verifiable proof — with no manual processing at any step.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Automated ingestion of authoritative and public datasets — credentials stay current without staff action</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Credentials signed inside hardware Trusted Execution Environments — keys never leave the enclave</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Passkey sign-in for credential holders — Face ID, Touch ID, Windows Hello. No wallet software, no app</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Embeddable live badges and QR verification — any relying party confirms status in under a second</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Automated ingestion of authoritative data</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Signed in hardware enclaves (TEE)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Passkey sign-in — no wallet, no app</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Live badges &amp; QR — verified in &lt; 1 s</span></li>
         </ul>
       </div>
       <div class="pillar">
@@ -321,9 +317,9 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
         <h3>Decentralized storage &amp; data infrastructure</h3>
         <p>The same production network that anchors our credentials is available for resilient data services in its own right.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Distributed storage across 800+ independent nodes — no single point of failure</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Tamper-evident ledger anchoring for records that must survive audit</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Decentralized database and compute layers for data-intensive workloads</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>800+ independent nodes — no single point of failure</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Tamper-evident ledger anchoring</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Decentralized database &amp; compute</span></li>
         </ul>
       </div>
     </div>
@@ -334,27 +330,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
   <div class="wrap">
     <p class="sec-eyebrow">How it works</p>
     <h2>From source data to verified credential — with no staff action.</h2>
-    <p class="sec-lede">The pipeline runs continuously: data in, credentials out, verification on demand. Your team never processes a request by hand.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="n">STEP 1 — INGEST</span>
-        <h3>Authoritative data, continuously</h3>
-        <p>The platform ingests your authoritative datasets — registries, transaction records, certification systems — on a daily cycle and derives each holder's current status automatically.</p>
-        <span class="tag">zero staff action</span>
-      </div>
-      <div class="step">
-        <span class="n">STEP 2 — ISSUE</span>
-        <h3>Credential signed in hardware</h3>
-        <p>An issuer agent running inside a Trusted Execution Environment signs a W3C-aligned credential anchored on a distributed ledger. Signing keys never leave the enclave.</p>
-        <span class="tag">tamper-resistant</span>
-      </div>
-      <div class="step">
-        <span class="n">STEP 3 — VERIFY</span>
-        <h3>One click. Under one second.</h3>
-        <p>Holders sign in with a passkey — Face ID, Touch ID, Windows Hello — and embed a live badge on their website. Anyone can verify with a click or QR scan.</p>
-        <span class="tag">&lt; 1s cryptographic proof</span>
-      </div>
-    </div>
+    <p class="sec-lede">Data in, credentials out, verification on demand.</p>
     <div class="flowpanel" aria-hidden="true">
       <div class="flowtrack">
         <svg class="flowsvg" viewBox="0 0 1000 238" preserveAspectRatio="none">
@@ -399,6 +375,11 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
         <span class="fnote n4" style="left:84%;top:26px">cryptographic proof · 0.4 s</span>
       </div>
     </div>
+    <ul class="steps-mini">
+      <li><b>1 · Ingest</b> — authoritative data, refreshed daily</li>
+      <li><b>2 · Issue</b> — signed in a hardware TEE, anchored on a ledger</li>
+      <li><b>3 · Verify</b> — anyone, one click or QR, in under a second</li>
+    </ul>
   </div>
 </section>
 
@@ -411,33 +392,33 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>Public sector</h3>
         <ul>
-          <li><b>Licences &amp; permits</b> — digital proofs that update automatically when status changes</li>
-          <li><b>Registries &amp; accreditation</b> — replace phone-and-PDF verification with one-click proof</li>
-          <li><b>Program eligibility</b> — let participants prove their standing instantly</li>
+          <li><b>Licences &amp; permits</b></li>
+          <li><b>Registries &amp; accreditation</b></li>
+          <li><b>Program eligibility</b></li>
         </ul>
       </div>
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4a2 2 0 001-1.73z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></span>Supply chain &amp; manufacturing</h3>
         <ul>
-          <li><b>Partner onboarding</b> — verify certifications without document chasing</li>
-          <li><b>Provenance</b> — tamper-evident trails of where things came from</li>
-          <li><b>Quality attestations</b> — ISO and safety certificates that prove themselves</li>
+          <li><b>Partner onboarding</b></li>
+          <li><b>Provenance</b></li>
+          <li><b>Quality attestations</b></li>
         </ul>
       </div>
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9.5 9l1.8 1.8 3.2-3.6M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/></svg></span>Professional &amp; certification bodies</h3>
         <ul>
-          <li><b>Good standing</b> — give members a live, embeddable proof</li>
-          <li><b>Qualifications</b> — credentials any employer can verify in a click</li>
-          <li><b>Renewals</b> — status updates propagate automatically, everywhere</li>
+          <li><b>Good standing</b></li>
+          <li><b>Qualifications</b></li>
+          <li><b>Renewals</b></li>
         </ul>
       </div>
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>Financial services &amp; compliance</h3>
         <ul>
-          <li><b>Business verification (KYB)</b> — authoritative facts, cryptographically fresh</li>
-          <li><b>Compliance attestations</b> — tamper-evident history of who held what, when</li>
-          <li><b>Audit readiness</b> — every credential event on an immutable trail</li>
+          <li><b>Business verification (KYB)</b></li>
+          <li><b>Compliance attestations</b></li>
+          <li><b>Audit readiness</b></li>
         </ul>
       </div>
     </div>
@@ -452,19 +433,19 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <div class="tiles">
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg></span>
-        <div><h3>Browser-only delivery</h3><p>A hosted service. No hardware, no software installation, no client infrastructure required to issue or verify.</p></div>
+        <div><h3>Browser-only delivery</h3><p>A hosted service — no hardware, no installs, no client infrastructure.</p></div>
       </div>
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></span>
-        <div><h3>No access to internal networks</h3><p>The platform operates on the data sources you designate, through public or published endpoints. It never connects inside your network.</p></div>
+        <div><h3>No access to internal networks</h3><p>Only the data sources you designate, via public endpoints — never inside your network.</p></div>
       </div>
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
-        <div><h3>No biometric or confidential data</h3><p>Passkey biometrics stay on the user's device. The platform processes only the record data needed to issue a credential — nothing personal beyond it.</p></div>
+        <div><h3>No biometric or confidential data</h3><p>Passkey biometrics never leave the user's device.</p></div>
       </div>
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></span>
-        <div><h3>Accessible and bilingual</h3><p>User-facing portals target WCAG 2.1 AA, operate in English and French, and are optimized for low-bandwidth connections.</p></div>
+        <div><h3>Accessible and bilingual</h3><p>WCAG 2.1 AA target · English and French.</p></div>
       </div>
     </div>
   </div>
@@ -493,7 +474,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <div class="engage">
       <div>
         <h2>Have records the world should be able to trust?</h2>
-        <p>Tell us what your organization issues or verifies today. We'll show you what it looks like as a live, self-serve credential — typically within a working session, not a procurement cycle.</p>
+        <p>Tell us what you issue or verify today — we'll show you what it looks like as a live credential.</p>
         <p class="note">Public-sector and enterprise inquiries welcome, in English or French.</p>
       </div>
       <div>

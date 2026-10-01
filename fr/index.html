@@ -121,7 +121,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,34px);line-
 .pillar ul svg{width:16px;height:16px;flex:none;margin-top:4px}
 
 /* Animated flow diagram */
-.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;margin-top:40px;overflow:hidden}
+.flowpanel{position:relative;background:linear-gradient(135deg,#081A2E 0%,#0E3354 52%,#116B57 100%);border:1px solid rgba(53,196,181,.25);border-radius:16px;padding:30px 34px 24px;overflow:hidden}
 .flowpanel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(460px 280px at 50% 42%,rgba(53,196,181,.15),transparent 70%)}
 .flowtrack{position:relative;height:238px}
 .flowsvg{position:absolute;inset:0;width:100%;height:100%}
@@ -181,15 +181,11 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,34px);line-
 }
 @media(max-width:720px){.flowpanel{display:none}}
 
-/* Steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
-.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 24px;position:relative;overflow:hidden}
-.step::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-bright),var(--mint))}
-.step .n{font-family:var(--mono);font-size:12px;color:var(--teal);display:block;margin-bottom:14px}
-.step h3{font-size:17px;font-weight:600;margin-bottom:8px}
-.step p{font-size:14.5px;color:var(--muted)}
-.step .tag{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--verified);background:var(--verified-bg);border-radius:5px;padding:3px 9px}
+/* Steps (mobile fallback) */
+.steps-mini{display:none;list-style:none;font-size:14.5px;color:var(--muted)}
+.steps-mini li{padding:10px 0;border-top:1px dashed var(--line)}
+.steps-mini b{color:var(--ink)}
+@media(max-width:720px){.steps-mini{display:block}}
 
 /* Use cases */
 .uses{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -270,7 +266,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <div>
       <p class="eyebrow">QSRéseau Canada inc. · Montréal (Québec)</p>
       <h1>Transformez des données faisant autorité en justificatifs que chacun peut <span class="v">vérifier</span> — en moins d'une seconde.</h1>
-      <p class="lede">QSNetwork bâtit une infrastructure de confiance numérique. Nous transformons les dossiers que votre organisation détient déjà en justificatifs numériques infalsifiables — réclamés au moyen d'une clé d'accès, sans portefeuille ni application — et vérifiables par quiconque, instantanément.</p>
+      <p class="lede">Nous transformons les dossiers que votre organisation détient déjà en justificatifs numériques infalsifiables — réclamés par clé d'accès, vérifiables par quiconque, instantanément.</p>
       <ul class="hero-points" aria-label="Propriétés clés">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.4" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>Infalsifiables par conception</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.4" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>Vérification en moins de 1 s</li>
@@ -303,17 +299,17 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
   <div class="wrap">
     <p class="sec-eyebrow">Ce que nous faisons</p>
     <h2>Une infrastructure de confiance, offerte comme service.</h2>
-    <p class="sec-lede">Les organisations détiennent des dossiers auxquels d'autres doivent pouvoir se fier — licences, enregistrements, adhésions, certifications. QSNetwork transforme ces dossiers en justificatifs qui font foi d'eux-mêmes, appuyés par une infrastructure de données décentralisée et résiliente.</p>
+    <p class="sec-lede">Nous transformons les dossiers auxquels on doit pouvoir se fier en justificatifs qui font foi d'eux-mêmes.</p>
     <div class="pillars">
       <div class="pillar">
         <span class="n">Service principal</span>
         <h3>Justificatifs vérifiables et confiance numérique</h3>
         <p>Un pipeline de bout en bout, des données faisant autorité jusqu'à la preuve instantanément vérifiable — sans aucun traitement manuel.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Ingestion automatisée des ensembles de données publics et faisant autorité — les justificatifs demeurent à jour sans intervention du personnel</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Justificatifs signés dans des environnements d'exécution de confiance (TEE) — les clés ne quittent jamais l'enclave</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Connexion par clé d'accès pour les titulaires — Face ID, Touch ID, Windows Hello. Aucun portefeuille, aucune application</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Insignes dynamiques intégrables et vérification par code QR — toute partie utilisatrice confirme le statut en moins d'une seconde</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Ingestion automatisée des données faisant autorité</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Signés dans des enclaves matérielles (TEE)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Clé d'accès — sans portefeuille ni application</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Insignes dynamiques et QR — vérifié en &lt; 1 s</span></li>
         </ul>
       </div>
       <div class="pillar">
@@ -321,9 +317,9 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
         <h3>Stockage décentralisé et infrastructure de données</h3>
         <p>Le réseau de production qui ancre nos justificatifs est aussi offert, à part entière, comme service de données résilient.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Stockage distribué sur plus de 800 nœuds indépendants — aucun point de défaillance unique</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Ancrage sur un registre à l'épreuve des altérations pour les dossiers qui doivent résister aux audits</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Couches décentralisées de base de données et de calcul pour les charges de travail à forte intensité de données</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Plus de 800 nœuds indépendants — aucun point de défaillance unique</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Ancrage sur registre à l'épreuve des altérations</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#149A8C" stroke-width="2.2" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg><span>Base de données et calcul décentralisés</span></li>
         </ul>
       </div>
     </div>
@@ -334,27 +330,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
   <div class="wrap">
     <p class="sec-eyebrow">Fonctionnement</p>
     <h2>Des données sources au justificatif vérifié — sans intervention du personnel.</h2>
-    <p class="sec-lede">Le pipeline fonctionne en continu : les données entrent, les justificatifs sortent, la vérification se fait sur demande. Votre équipe ne traite jamais une demande à la main.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="n">ÉTAPE 1 — INGESTION</span>
-        <h3>Des données faisant autorité, en continu</h3>
-        <p>La plateforme ingère vos ensembles de données faisant autorité — registres, dossiers transactionnels, systèmes de certification — selon un cycle quotidien et établit automatiquement le statut courant de chaque titulaire.</p>
-        <span class="tag">zéro intervention</span>
-      </div>
-      <div class="step">
-        <span class="n">ÉTAPE 2 — ÉMISSION</span>
-        <h3>Un justificatif signé dans le matériel</h3>
-        <p>Un agent émetteur s'exécutant dans un environnement d'exécution de confiance signe un justificatif conforme aux normes du W3C, ancré sur un registre distribué. Les clés de signature ne quittent jamais l'enclave.</p>
-        <span class="tag">infalsifiable</span>
-      </div>
-      <div class="step">
-        <span class="n">ÉTAPE 3 — VÉRIFICATION</span>
-        <h3>Un clic. Moins d'une seconde.</h3>
-        <p>Les titulaires se connectent avec une clé d'accès — Face ID, Touch ID, Windows Hello — et intègrent un insigne dynamique à leur site Web. Quiconque peut vérifier d'un clic ou d'un balayage de code QR.</p>
-        <span class="tag">preuve cryptographique &lt; 1 s</span>
-      </div>
-    </div>
+    <p class="sec-lede">Les données entrent, les justificatifs sortent, la vérification se fait sur demande.</p>
     <div class="flowpanel" aria-hidden="true">
       <div class="flowtrack">
         <svg class="flowsvg" viewBox="0 0 1000 238" preserveAspectRatio="none">
@@ -399,6 +375,11 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
         <span class="fnote n4" style="left:84%;top:26px">preuve cryptographique · 0,4 s</span>
       </div>
     </div>
+    <ul class="steps-mini">
+      <li><b>1 · Ingestion</b> — données faisant autorité, actualisées chaque jour</li>
+      <li><b>2 · Émission</b> — signé dans un TEE matériel, ancré sur un registre</li>
+      <li><b>3 · Vérification</b> — par quiconque, un clic ou un QR, en moins d'une seconde</li>
+    </ul>
   </div>
 </section>
 
@@ -411,33 +392,33 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>Secteur public</h3>
         <ul>
-          <li><b>Licences et permis</b> — des preuves numériques qui se mettent à jour automatiquement au changement de statut</li>
-          <li><b>Registres et agréments</b> — remplacer la vérification par téléphone et PDF par une preuve en un clic</li>
-          <li><b>Admissibilité aux programmes</b> — permettre aux participants de prouver leur statut instantanément</li>
+          <li><b>Licences et permis</b></li>
+          <li><b>Registres et agréments</b></li>
+          <li><b>Admissibilité aux programmes</b></li>
         </ul>
       </div>
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4a2 2 0 001-1.73z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></span>Chaîne d'approvisionnement et fabrication</h3>
         <ul>
-          <li><b>Intégration des partenaires</b> — vérifier les certifications sans courir après les documents</li>
-          <li><b>Traçabilité</b> — des pistes à l'épreuve des altérations sur la provenance</li>
-          <li><b>Attestations de qualité</b> — des certificats ISO et de sécurité qui font foi d'eux-mêmes</li>
+          <li><b>Intégration des partenaires</b></li>
+          <li><b>Traçabilité</b></li>
+          <li><b>Attestations de qualité</b></li>
         </ul>
       </div>
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9.5 9l1.8 1.8 3.2-3.6M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/></svg></span>Ordres professionnels et organismes de certification</h3>
         <ul>
-          <li><b>Membres en règle</b> — offrir une preuve dynamique et intégrable</li>
-          <li><b>Qualifications</b> — des titres que tout employeur peut vérifier en un clic</li>
-          <li><b>Renouvellements</b> — les changements de statut se propagent automatiquement, partout</li>
+          <li><b>Membres en règle</b></li>
+          <li><b>Qualifications</b></li>
+          <li><b>Renouvellements</b></li>
         </ul>
       </div>
       <div class="use">
         <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E4D46" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>Services financiers et conformité</h3>
         <ul>
-          <li><b>Vérification d'entreprise (KYB)</b> — des faits faisant autorité, d'une fraîcheur cryptographique</li>
-          <li><b>Attestations de conformité</b> — un historique infalsifiable : qui détenait quoi, et quand</li>
-          <li><b>Préparation à l'audit</b> — chaque événement de justificatif sur une piste immuable</li>
+          <li><b>Vérification d'entreprise (KYB)</b></li>
+          <li><b>Attestations de conformité</b></li>
+          <li><b>Préparation à l'audit</b></li>
         </ul>
       </div>
     </div>
@@ -452,19 +433,19 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <div class="tiles">
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg></span>
-        <div><h3>Livraison par navigateur seulement</h3><p>Un service hébergé. Aucun matériel, aucune installation logicielle, aucune infrastructure cliente requise pour émettre ou vérifier.</p></div>
+        <div><h3>Livraison par navigateur seulement</h3><p>Un service hébergé — ni matériel, ni installation, ni infrastructure cliente.</p></div>
       </div>
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></span>
-        <div><h3>Aucun accès aux réseaux internes</h3><p>La plateforme s'appuie sur les sources de données que vous désignez, par des points d'accès publics ou publiés. Elle ne se connecte jamais à l'intérieur de votre réseau.</p></div>
+        <div><h3>Aucun accès aux réseaux internes</h3><p>Uniquement les sources que vous désignez, par points d'accès publics — jamais dans votre réseau.</p></div>
       </div>
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
-        <div><h3>Aucune donnée biométrique ou confidentielle</h3><p>Les données biométriques des clés d'accès demeurent sur l'appareil de l'utilisateur. La plateforme ne traite que les données nécessaires à l'émission d'un justificatif — rien de personnel au-delà.</p></div>
+        <div><h3>Aucune donnée biométrique ou confidentielle</h3><p>Les données biométriques ne quittent jamais l'appareil de l'utilisateur.</p></div>
       </div>
       <div class="tile">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#16324F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></span>
-        <div><h3>Accessible et bilingue</h3><p>Les portails destinés aux utilisateurs visent la norme WCAG 2.1 AA, fonctionnent en français et en anglais et sont optimisés pour les connexions à faible bande passante.</p></div>
+        <div><h3>Accessible et bilingue</h3><p>Cible WCAG 2.1 AA · français et anglais.</p></div>
       </div>
     </div>
   </div>
@@ -493,7 +474,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
     <div class="engage">
       <div>
         <h2>Des dossiers auxquels le monde devrait pouvoir se fier?</h2>
-        <p>Dites-nous ce que votre organisation délivre ou vérifie aujourd'hui. Nous vous montrerons ce que cela donne comme justificatif dynamique en libre-service — le temps d'une séance de travail, pas d'un cycle d'approvisionnement.</p>
+        <p>Dites-nous ce que vous délivrez ou vérifiez aujourd'hui — nous vous montrerons ce que cela donne comme justificatif dynamique.</p>
         <p class="note">Demandes du secteur public et des entreprises bienvenues, en français ou en anglais.</p>
       </div>
       <div>
